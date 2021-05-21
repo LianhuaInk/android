@@ -15,6 +15,12 @@
            fetch="https://gitlab.com/exTHmUI"
            revision="exthm-11" />
 
+	  <remote name="el"
+          fetch="https://github.com/ExplosiveLobster"
+          pushurl="git@github.com:ExplosiveLobster" />
+  <remote name="nxp"
+          fetch="https://github.com/NXP" />
+	
   <project path="build/make" name="android_build" groups="pdk" remote="exthm" >
     <copyfile src="core/root.mk" dest="Makefile" />
     <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
@@ -81,5 +87,94 @@
       from https://www.notion.so/07ab6bcc14ec47ee9bb313548776873b
   -->
 
+ <!--<project path="system/extras" name="platform_system_extras" groups="pdk" remote="el" revision="android-10" />-->
+  <project path="build/make" name="platform_build" groups="pdk" remote="el" revision="android-11" >
+    <copyfile src="core/root.mk" dest="Makefile" />
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <project path="build/soong" name="platform_build_soong" groups="pdk,tradefed" remote="el" revision="android-11"  >
+    <linkfile src="root.bp" dest="Android.bp" />
+    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+  <project path="bionic" name="platform_bionic" groups="pdk" remote="el" revision="android-11" />
 
+  <project path="bootable/recovery" name="platform_bootable_recovery" groups="pdk" remote="el" revision="android-11" />
+
+  <!--<project path="external/json-c" name="platform_external_json-c" remote="el" revision="android-10" />-->
+
+  <project path="device/qcom/kernelscripts" name="device_qcom_kernelscripts" remote="el" revision="android-11" />
+
+  <project path="external/tinycompress" name="platform_external_tinycompress" groups="pdk" remote="el" revision="LA.UM.9.8.r1-03400-SDM710.0" />
+
+  <project path="frameworks/base" name="platform_frameworks_base" groups="pdk-cw-fs,pdk-fs" remote="el" revision="android-11" />
+
+  <project path="hardware/interfaces" name="platform_hardware_interfaces" groups="pdk" remote="el" revision="android-11" />
+
+  <project path="hardware/nxp/nfc" name="platform_hardware_nxp_nfc" groups="pdk" remote="el" revision="android-11" />
+
+  <!-- CAF HALs for 4.9 kernel -->
+  <project path="hardware/qcom/caf-4.9/audio" name="platform_hardware_qcom_caf-4.9_audio" remote="el" revision="LA.UM.9.8.r1-03400-SDM710.0" />
+  <project path="hardware/qcom/caf-4.9/display" name="platform_hardware_qcom_caf-4.9_display" remote="el" revision="LA.UM.9.8.r1-03400-SDM710.0" />
+  <project path="hardware/qcom/caf-4.9/gps" name="platform_hardware_qcom_caf-4.9_gps" remote="el" revision="LA.UM.9.8.r1-03400-SDM710.0" />
+  <project path="hardware/qcom/caf-4.9/media" name="platform_hardware_qcom_caf-4.9_media" remote="el" revision="LA.UM.9.8.r1-03400-SDM710.0" />
+  <project path="hardware/qcom/caf-4.9/media-staging" name="platform_hardware_qcom_caf-4.9_media" remote="el" revision="LA.UM.8.6.2.r1-04900-89xx.0" />
+
+  <project path="packages/apps/ExactCalculator" name="platform_packages_apps_ExactCalculator" groups="pdk-fs" remote="el" revision="android-11" />
+  <project path="packages/apps/Launcher3" name="platform_packages_apps_Launcher3" groups="pdk-fs" remote="el" revision="android-11" />
+  <project path="packages/apps/PermissionController" name="platform_packages_apps_PermissionController" groups="pdk-cw-fs,pdk-fs" remote="el" revision="android-11" />
+  <project path="packages/apps/SnapdragonCamera" name="platform_packages_apps_SnapdragonCamera" groups="pdk-fs" remote="el" revision="android-11" />
+  <project path="packages/apps/SnapdragonGallery" name="platform_packages_apps_SnapdragonGallery" groups="pdk-fs" remote="el" revision="android-11" />
+  <project path="packages/apps/SnapdragonMusic" name="platform_packages_apps_SnapdragonMusic" groups="pdk-fs" remote="el" revision="android-11" />
+
+  <project path="vendor/el" name="platform_vendor_el" groups="device" remote="el" revision="android-11" >
+    <linkfile src="dlkm/AndroidKernelModule.mk" dest="device/qcom/common/dlkm/AndroidKernelModule.mk" />
+    <linkfile src="build/stop_scan.mk" dest="hardware/qcom/caf-4.9/Android.mk" />
+  </project>
+
+  <project path="vendor/nxp" name="platform_vendor_nxp" groups="device" remote="el" revision="master" />
+  <project path="vendor/nxp/NXPNFCC_FW" name="nfc-NXPNFCC_FW" groups="device" remote="nxp" revision="master" />
+
+  <project path="vendor/qcom/opensource/audio-kernel" name="platform_vendor_qcom_opensource_audio-kernel" remote="el" revision="LA.UM.9.8.r1-03400-SDM710.0" />
+  <project path="vendor/qcom/opensource/dataservices" name="platform_vendor_qcom_opensource_dataservices" remote="el" revision="LA.UM.9.8.r1-03400-SDM710.0" />
+  <!-- TODO: Rename this repo to platform_vendor_qcom_opensource_data-ipa-cfg-mgr when we will drop Android 10 -->
+  <project path="vendor/qcom/opensource/data-ipa-cfg-mgr" name="platform_hardware_qcom_caf-4.9_data-ipa-cfg-mgr" remote="el" revision="LA.UM.9.8.r1-03400-SDM710.0" />
+  <project path="vendor/qcom/opensource/display-commonsys-intf" name="platform_vendor_qcom_opensource_display-commonsys-intf" remote="el" revision="LA.UM.9.8.r1-03400-SDM710.0" />
+  <project path="vendor/qcom/opensource/healthd-ext" name="platform_vendor_qcom_opensource_healthd-ext" remote="el" revision="LA.UM.9.8.r1-03400-SDM710.0" />
+  <project path="vendor/qcom/opensource/interfaces" name="platform_vendor_qcom_opensource_interfaces" remote="el" revision="LA.UM.9.8.r1-03400-SDM710.0" />
+  <project path="vendor/qcom/opensource/location" name="platform_vendor_qcom_opensource_location" remote="el" revision="LA.UM.9.8.r1-03400-SDM710.0" />
+  <project path="vendor/qcom/opensource/power" name="platform_vendor_qcom_opensource_power" remote="el" revision="LA.UM.9.8.r1-03400-SDM710.0" />
+  <!--<project path="vendor/qcom/opensource/wlan/fw-api" name="platform_vendor_qcom_opensource_wlan_fw-api" remote="el" revision="LA.UM.8.8.r1-06100-SDM710.0" />
+  <project path="vendor/qcom/opensource/wlan/qca-wifi-host-cmn" name="platform_vendor_qcom_opensource_wlan_qca-wifi-host-cmn" remote="el" revision="LA.UM.8.8.r1-06100-SDM710.0" />
+  <project path="vendor/qcom/opensource/wlan/qcacld-3.0" name="platform_vendor_qcom_opensource_wlan_qcacld-3.0" remote="el" revision="LA.UM.8.8.r1-06100-SDM710.0" />-->
+  <!--<project path="device/sony/common" name="device_sony_common" groups="device" remote="el" revision="android-11" />-->
+  <project path="device/sony/sepolicy" name="device_sony_sepolicy" groups="device" remote="el" revision="android-11" />
+
+  <!-- msm8956 -->
+  <project path="device/sony/loire" name="device_sony_loire" groups="device" remote="el" revision="android-11" />
+  <project path="device/sony/kugo" name="device_sony_kugo" groups="device" remote="el" revision="android-11" />
+  <project path="device/sony/suzu" name="device_sony_suzu" groups="device" remote="el" revision="android-11" />
+
+  <!-- sdm630 -->
+  <!--<project path="device/sony/nile" name="device_sony_nile" groups="device" remote="el" revision="android-10" />
+  <project path="device/sony/discovery" name="device_sony_discovery" groups="device" remote="el" revision="android-10" />-->
+
+  <project path="kernel/sony/msm-4.9" name="kernel_sony_msm-4.9" groups="device" remote="el" revision="LA.UM.9.8.r1-03400-SDM710.0" />
+
+  <project path="vendor/sony/camera" name="platform_vendor_sony_camera" groups="device" remote="el" revision="aosp/LA.UM.6.4.r1" />
+  <project path="vendor/sony/fingerprint" name="platform_vendor_sony_fingerprint" groups="device" remote="el" revision="master" />
+  <project path="vendor/sony/macaddrsetup" name="platform_vendor_sony_macaddrsetup" groups="device" remote="el" revision="master" />
+  <project path="vendor/sony/QcRilAm" name="platform_vendor_sony_QcRilAm" groups="device" remote="el" revision="master" />
+  <project path="vendor/sony/timekeep" name="platform_vendor_sony_timekeep" groups="device" remote="el" revision="master" />
+
+  <!-- BLOBs -->
+  <project path="vendor/sony/loire" name="platform_vendor_sony_loire" groups="device" remote="el" revision="master" />
+
+  <project path="vendor/broadcom/wlan" name="platform_vendor_broadcom_wlan" groups="device" remote="el" revision="master" />
+
+	
 </manifest>
