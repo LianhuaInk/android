@@ -28,7 +28,7 @@
   <project path="device/lineage/sepolicy" remote="exthm" name="android_device_lineage_sepolicy" />
 
   <!-- Frameworks -->
-  <!--project path="frameworks/base" name="android_frameworks_base" remote="exthm" /-->
+  <project path="frameworks/base" name="android_frameworks_base" remote="exthm" />
   <project path="frameworks/av" name="android_frameworks_av" remote="exthm" />
 
   <!-- Packages -->
@@ -99,7 +99,7 @@
 
   <project path="external/tinycompress" name="platform_external_tinycompress" groups="pdk" remote="el" revision="LA.UM.9.8.r1-03400-SDM710.0" />
 
-  <project path="frameworks/base" name="platform_frameworks_base" groups="pdk-cw-fs,pdk-fs" remote="el" revision="android-11" />
+  <!--project path="frameworks/base" name="platform_frameworks_base" groups="pdk-cw-fs,pdk-fs" remote="el" revision="android-11" /-->
 
   <project path="hardware/interfaces" name="platform_hardware_interfaces" groups="pdk" remote="el" revision="android-11" />
 
